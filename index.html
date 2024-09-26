@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="style.css" href="style.css">
+		<link rel="stylesheet" href="utility.css">
+		<link rel="icon" type="image/x-icon" href="https://www.freepnglogos.com/uploads/spotify-logo-png/file-spotify-logo-png-4.png">
+		<title>Spotify - Web Player: Music for everyone Clone </title>
+		<style>
+			
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+         
+         :root{
+             --a:0;
+         }
+         * {
+             margin: 0;
+             padding: 0;
+             font-family: 'Roboto', sans-serif;
+         }
+         
+         .close {
+             display: none;
+         }
+         
+         body {
+             background-color: black;
+             color: white;
+         }
+         
+         .left {
+             width: 25vw;
+             padding: 10px;
+         }
+         
+         .right {
+             width: 75vw;
+         }
+         
+         
+         
+         .home ul li {
+             display: flex;
+             gap: 15px;
+             list-style: none;
+             padding-top: 14px;
+             font-weight: bold;
+			 bottom: 3px;
+         }
+         
+         .heading {
+             display: flex;
+             gap: 15px;
+             width: 100%;
+             padding-top: 14px;
+             padding: 23px 14px;
+             font-weight: bold;
+             //align-items: center;
+             font-size: 13px;
+			 height: 72px;
+         }
+         
+         .heading svg {
+             width: 20px;
+			 color: grey;
+         }
+		.heading: hover h2 svg{
+			color: white;
+			cursor: pointer;
+			
+		}
+	
+         
+         .library {
+             min-height: 80vh;
+             position: relative;
+			 color: grey;
+			 font-size:16px;
+         }
+		.heading:hover h2{
+             font-weight: bold;
+			 color: white;
+			 cursor: pointer;
+         }
+		
+		
+         
+         .footer {
+				display: flex;          
+				flex-direction: column;      
+				font-size: 10px;             
+				color: #B3B3B3;                 
+				gap: 13px;                   
+				padding: 10px 0;             
+				position: absolute;          
+				bottom: 90px;                
+				width: 100%;
+				margin: 10px;
+         
+         }
+		 .footer .row {
+			display: flex;              
+			gap: 13px;                  
+			margin-bottom: 10px;        
+		}                               
+								
+		.footer .row:last-child {       
+		margin-bottom: 0;           
+		}
+         
+         .footer a {
+            font-size: 10px;             
+			color: grey; 
+			text-decoration: none; 
+         }
+         
+         .right {
+             margin: 16px 0;
+             position: relative;
+         }
+         
+         .header {
+             display: flex;
+             justify-content: space-between;
+             background-color: rgb(34 34 34);
+         }
+         
+         .header>* {
+             padding: 20px;
+         }
+         
+         .spotifyPlaylists {
+             padding: 16px;
+         }
+         
+         .spotifyPlaylists h1 {
+             padding: 16px;
+         }
+         .spotifyPlay{
+			padding: 16px;
+			 margin: 30px;
+             display: flex;
+             gap: 10px;
+             flex-wrap: wrap;
+             overflow-y: auto;
+             max-height: 60vh; 
+		 }
+         .cardContainer {
+             margin: 30px;
+             display: flex;
+             gap: 10px;
+           
+          ; 
+         }
+		 .spotify-play{
+			margin: 30px;
+             display: flex;
+             gap: 10px;
+             flex-wrap: wrap; 
+			 
+		 }
+         
+         .card {
+             width: 140px;
+			 height: auto;
+             padding: 10px;
+             border-radius: 5px;
+             background-color: #252525;
+             position: relative;
+             transition: all .9s;
+         }
+         .card:hover{
+             background-color: rgb(105, 103, 103);
+             cursor: pointer;
+             --a: 1;
+         }
+         
+         .card>* {
+             padding-top: 10px;
+         }
+         
+         .card img {
+             width: 100%;
+             object-fit: contain;
+			 
+         }
+		 .card span img{
+			width: 100%;
+            object-fit: contain;
+			width: 100%;
+			height: auto;
+			border-radius: 50%; 
+			overflow: hidden; 
+			display: block; 
+		 }
+         
+         .play {
+             width: 38px;
+			 height: 38px;
+             background-color:  #1ed760;
+             border-radius: 50%;
+             padding: 4px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             position: absolute;
+             bottom: 88px;
+             right: 17px;
+             opacity: var(--a);
+             transition: all 1s ease-out;
+         }
+		 .player{
+			 width: 38px;
+			 height: 38px;
+             background-color:  #1ed760;
+             border-radius: 50%;
+             padding: 4px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             position: absolute;
+             bottom: 60px;
+			 right: 18px;
+             opacity: var(--a);
+             transition: all 1s ease-out;
+			
+			
+			bottom: 60px;
+			right: 18px;
+			
+		 }
+         
+         .buttons>* {
+             margin: 0 12px;
+         }
+         
+         .signupbtn {
+             background-color: rgb(34 34 34);
+             color: rgb(156, 148, 148);
+             font-weight: bold;
+             border: none;
+             outline: none;
+             cursor: pointer;
+             font-size: 16px;
+         }
+         
+         .signupbtn:hover {
+             font-size: 17px;
+             color: white
+         }
+         
+         .loginbtn {
+             background-color: white;
+             border-radius: 21px;
+             color: black;
+             padding: 10px;
+             width: 79px;
+             cursor: pointer;
+             font-size: 16px;
+         }
+         
+         .loginbtn:hover {
+             font-weight: bold;
+             font-size: 17px;
+         }
+         
+         
+         .playbar {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             position: fixed;
+             bottom: 30px;
+             filter: invert(1);
+             background: #e2d9d9;
+             border-radius: 10px;
+             width: 90%;
+             padding: 12px;
+             width: 70vw;
+             min-height: 40px;
+         }
+         
+         .songbuttons {
+             display: flex;
+             justify-content: center;
+             gap: 16px;
+         }
+         
+         .songlist {
+             height: 544px;
+             overflow: auto;
+             margin-bottom: 44px;
+         }
+         
+         .hamburger {
+             display: none;
+             cursor: pointer;
+         }
+         
+         .hamburgerContainer {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 14px;
+         }
+         
+         .songlist .info {
+        
+         }
+		 
+		 .songlist ul{
+			padding: 12px;
+			list-style-type: none;
+		}
+		.songlist ul li{
+			list-style-type: decimal;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+			gap: 2px;
+			cursor: pointer;
+			border: 1px solid rgba(146, 143, 143, 0.491);
+			margin: 15px 0;
+			padding: 15px;
+			border-radius: 5px;
+
+
+		}
+		.songlist ul li svg{
+			color: #ebe5e5;
+			margin: -1px;
+			padding: 1px;
+		}
+		.info{
+			display: flex;
+			gap: 20px;
+		}
+		 .info div {
+             word-break: break-all;
+         }
+         .info :hover{
+				color: white;
+				pointer: cursor;
+		}
+         .playnow {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+         }
+         
+         .playnow span {
+             font-size: 15px;
+             width: 64px;
+             padding: 1px;
+         }
+		 .playnow span :hover{
+			color: white;
+		}
+         
+         .seekbar {
+             height: 4px;
+             width: 98%;
+             background: black;
+             border-radius: 10px;
+             position: absolute;
+             bottom: 8px;
+             margin: 6px;
+             cursor: pointer;
+         }
+         
+         .circle {
+             width: 13px;
+             height: 13px;
+             border-radius: 13px;
+             background-color: black;
+             position: relative;
+             bottom: 5px;
+             left: 0%;
+             transition: left 0.5s;
+         }
+         
+         .songbuttons img {
+             cursor: pointer;
+         }
+         
+         .timevol {
+             display: flex;
+             justify-content: space-evenly;
+             align-items: center;
+         }
+         
+         
+         .songinfo {
+             color: black;
+             padding: 0 12px;
+             width: 250px;
+         }
+         
+         .songtime {
+             width: 125px;
+             color: black;
+             padding: 0 12px;
+         }
+         
+         
+         .volume {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 12px;
+             cursor: pointer;
+         }
+         .range input{
+             cursor: pointer;
+         }
+         
+         .abovebar {
+             display: flex;
+             justify-content: space-between;
+             margin: 20px 0;
+             width: 100%;
+         }
+		
+         @media (max-width: 1200px) {
+             .left {
+                 position: absolute;
+                 left: -130%;
+                 transition: all .3s;
+                 z-index: 1;
+                 width: 373px;
+                 background-color: black;
+                 padding: 0;
+                 height: 100vh;
+                 position: fixed;
+                 top: 0;
+             }
+         
+             .songinfo,
+             .songtime {
+                 width: auto;
+             }
+         
+             .left .close {
+                 position: absolute;
+                 right: 31px;
+                 top: 25px;
+                 width: 29px;
+				 cursor: pointer;
+             }
+         
+             .timevol {
+                 display: flex;
+                 justify-content: space-evenly;
+                 align-items: center;
+                 flex-direction: column;
+                 gap: 13px;
+             }
+         
+             .right {
+                 width: 100vw;
+             }
+         
+             .playbar {
+                 width: calc(100vw - 75px); 
+             }
+         
+             .seekbar {
+                 width: calc(100vw - 120px);
+             }
+         
+             .hamburger {
+                 display: block;
+             }
+         
+             .right {
+                 margin: 0;
+             }
+         
+             .card {
+                 width: 30vw;
+             }
+         
+             .cardContainer {
+                 margin: 0;
+                 justify-content: center; 
+             }
+         
+             .close {
+                 display: block;
+             }
+         
+             .abovebar {
+                 flex-direction: column;
+                 gap: 23px;
+                 align-items: center;
+             }
+         
+             .cardContainer {
+                 max-height: unset;
+                 overflow-y: unset;
+                
+             }
+			.spotify-play{
+				 max-height: unset;
+                 overflow-y: unset;
+                 margin-bottom: 35vh;
+				
+			}
+             .playbar{
+                 right: 25px;
+             }
+         }
+         
+         @media (max-width: 500px) {
+             .card {
+                 width: 100%;
+             }
+         
+             .header>* {
+                 padding: 2px;
+             }
+         
+             .buttons>* {
+                 margin: 0 6px;
+             }
+         
+             .header{
+                 padding: 7px;
+             }
+         
+             .spotifyPlaylists h1 {
+                 padding: 4px;
+             }
+         
+             .library{
+                 height: 85vh;
+             }
+         
+             .left{ 
+                 width: 100vw;
+             }
+         
+          
+         
+             
+         }
+		.border{
+	     border: 1px solid  green;
+	     margin: 3px;
+		}
+     
+     .flex{
+	     display: flex;
+		}
+     
+     .justify-center{
+	     justify-content: center;
+		}
+     
+     .items-center{
+	     align-items: center;
+		}
+     
+     .bg-black{
+	     background-color: black;
+	     color: white;
+		}
+     
+     .invert{
+	     filter: invert(1);
+		}
+     
+     .bg-grey{
+	     background-color: #121212;
+		}
+     
+     .rounded{
+	     border-radius: 7px;
+		}
+     
+     .m-1{
+	     margin: 5px;
+		}
+     
+     .p-1{
+	     padding: 10px;
+		}
+     
+     
+     /* For Webkit browsers (e.g., Chrome, Safari) */
+     ::-webkit-scrollbar {
+	     width: 12px;
+		}
+     
+     ::-webkit-scrollbar-thumb {
+	     background-color: #333; /* Dark color for the thumb */
+	     border-radius: 6px;
+     }
+     
+     ::-webkit-scrollbar-track {
+	     background-color: #222; /* Dark color for the track */
+		}
+     
+     /* For Firefox */
+     scrollbar-color: #333 #222; /* Dark color for the thumb and track in Firefox */
+     
+		.mobile{
+			position: absolute;
+			z-index: 0;
+			inset: 0px;
+			cursor: pointer;
+			background-color: transparent;
+			width: 100%;
+		}
+		.boy{
+			position: inline;
+		}
+		.cYVsbq {
+		display: flex;
+		position: absolute;
+		left: var(--encore-spacing-tighter,12px);
+		}
+		.englishb{
+		font-weight: 700;
+		margin-left: 30%;
+		padding-left: 18px;
+		padding-right: 18px;
+		padding-top: 7px;
+		padding-bottom: 7px;
+		border-radius: 13px;
+		}
+		
+
+		</style>
+
+
+
+	</head>
+	<body>
+		<div class= "container flex bg-black">
+			<div class="left">
+				<div class="close">			
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg> 
+				</div>
+				<div class="home bg-grey rounded m-1 p-1">
+					<div class="logo">
+						<svg role="img" width="110" class="invert" viewBox="0 0 78 24" aria-label="Spotify" aria-hidden="false" height="34" data-encore-id="logoSpotify" class="Svg-sc-6c3c1v-0 dDJltW"><title>Spotify</title><path d="M31.8234 11.0782C29.8042 10.5836 29.4444 10.2376 29.4444 9.50832C29.4444 8.8202 30.077 8.35677 31.0159 8.35677C31.9262 8.35677 32.8296 8.70885 33.7765 9.43308C33.8051 9.45515 33.8407 9.46318 33.8763 9.45816C33.8937 9.45541 33.9104 9.4491 33.9253 9.43962C33.9403 9.43013 33.9532 9.41767 33.9633 9.40299L34.9496 7.97659C34.9691 7.9483 34.9774 7.91361 34.9728 7.87941C34.9682 7.84522 34.9511 7.81402 34.9249 7.79203C33.7982 6.86416 32.5291 6.41378 31.0456 6.41378C28.8653 6.41378 27.3422 7.75591 27.3422 9.67684C27.3422 11.7372 28.6567 12.4654 30.927 13.0292C32.8592 13.4856 33.1854 13.8688 33.1854 14.5529C33.1854 15.3102 32.5262 15.7817 31.4647 15.7817C30.2855 15.7817 29.3239 15.3744 28.2485 14.4185C28.2354 14.4066 28.22 14.3975 28.2033 14.3918C28.1866 14.3861 28.169 14.3839 28.1515 14.3853C28.1339 14.3867 28.1168 14.3917 28.1012 14.4C28.0856 14.4083 28.0719 14.4197 28.0607 14.4335L26.9547 15.7837C26.9322 15.8106 26.921 15.8454 26.9234 15.8806C26.9258 15.9158 26.9416 15.9487 26.9676 15.9722C28.2199 17.1188 29.7587 17.7236 31.4192 17.7236C33.7695 17.7236 35.2877 16.4066 35.2877 14.3683C35.2877 12.645 34.2845 11.6921 31.8234 11.0782ZM42.31 13.3873C42.31 14.8418 41.4363 15.8579 40.185 15.8579C38.9496 15.8579 38.0165 14.7966 38.0165 13.3873C38.0165 11.9789 38.9486 10.9177 40.186 10.9177C41.4165 10.9177 42.31 11.9559 42.31 13.3873ZM40.6041 9.03385C39.5861 9.03385 38.7499 9.44613 38.061 10.2897V9.3408C38.0613 9.30506 38.0476 9.27066 38.023 9.2451C37.9984 9.21955 37.9648 9.20491 37.9296 9.20438H36.1209C36.1033 9.20451 36.086 9.20814 36.0699 9.21507C36.0537 9.222 36.0391 9.23208 36.0268 9.24475C36.0145 9.25742 36.0048 9.27242 35.9982 9.2889C35.9916 9.30538 35.9883 9.32302 35.9884 9.3408V19.8873C35.9884 19.9626 36.0477 20.0237 36.1209 20.0237H37.9296C37.9648 20.0232 37.9984 20.0086 38.023 19.983C38.0476 19.9575 38.0613 19.9231 38.061 19.8873V16.5581C38.7509 17.3515 39.5861 17.7387 40.6041 17.7387C42.4968 17.7387 44.4123 16.2441 44.4123 13.3873C44.4123 10.5295 42.4968 9.03385 40.6041 9.03385ZM49.3235 15.8729C48.0267 15.8729 47.0502 14.8046 47.0502 13.3873C47.0502 11.9649 47.9931 10.9317 49.2938 10.9317C50.5985 10.9317 51.5819 12.001 51.5819 13.4194C51.5819 14.8408 50.6331 15.8729 49.3235 15.8729ZM49.3235 9.03486C46.8862 9.03486 44.9766 10.9608 44.9766 13.4184C44.9766 15.8499 46.8733 17.7557 49.2938 17.7557C51.739 17.7557 53.6545 15.8368 53.6545 13.3873C53.6545 10.9468 51.7529 9.03385 49.3235 9.03385V9.03486ZM58.8592 9.20438H56.8697V7.11795C56.8699 7.10013 56.8667 7.08243 56.8601 7.06589C56.8536 7.04935 56.8439 7.0343 56.8316 7.0216C56.8192 7.00891 56.8046 6.99883 56.7884 6.99195C56.7722 6.98507 56.7548 6.98152 56.7372 6.98153H54.9285C54.8935 6.98205 54.86 6.99655 54.8354 7.02189C54.8108 7.04723 54.797 7.08137 54.797 7.11694V9.20438H53.9273C53.9098 9.20451 53.8925 9.20815 53.8764 9.21509C53.8604 9.22203 53.8458 9.23213 53.8336 9.24481C53.8213 9.25749 53.8117 9.2725 53.8052 9.28898C53.7988 9.30545 53.7956 9.32306 53.7958 9.3408V10.9357C53.7958 11.0099 53.8551 11.0711 53.9273 11.0711H54.797V15.1969C54.797 16.864 55.6055 17.7096 57.2008 17.7096C57.8491 17.7096 58.3868 17.5722 58.8948 17.2763C58.9152 17.2644 58.9322 17.2474 58.944 17.2268C58.9558 17.2061 58.962 17.1827 58.962 17.1589V15.6402C58.962 15.6171 58.9561 15.5944 58.9451 15.5743C58.934 15.5541 58.9181 15.5371 58.8988 15.5249C58.8797 15.5128 58.8578 15.5059 58.8353 15.5048C58.8128 15.5038 58.7904 15.5086 58.7703 15.5188C58.4214 15.6994 58.0853 15.7817 57.7088 15.7817C57.1286 15.7817 56.8687 15.5108 56.8687 14.906V11.0701H58.8592C58.8768 11.07 58.8941 11.0664 58.9102 11.0594C58.9264 11.0525 58.941 11.0424 58.9533 11.0298C58.9656 11.0171 58.9753 11.0021 58.9819 10.9856C58.9885 10.9691 58.9918 10.9515 58.9917 10.9337V9.33879C58.9918 9.32106 58.9885 9.30347 58.9819 9.28705C58.9753 9.27062 58.9655 9.25569 58.9532 9.2431C58.9409 9.23051 58.9263 9.22052 58.9101 9.2137C58.894 9.20689 58.8767 9.20338 58.8592 9.20338V9.20438ZM65.7926 9.21241V8.95662C65.7926 8.20229 66.0743 7.86525 66.7069 7.86525C67.0834 7.86525 67.3869 7.94249 67.7259 8.05885C67.7458 8.06532 67.7669 8.06688 67.7876 8.06339C67.8082 8.0599 67.8277 8.05146 67.8445 8.03879C67.8617 8.02619 67.8757 8.0096 67.8853 7.99041C67.8949 7.97122 67.8999 7.94998 67.8998 7.92845V6.36563C67.9001 6.33654 67.891 6.30815 67.8741 6.28466C67.8572 6.26118 67.8333 6.24384 67.8059 6.23523C67.3194 6.08322 66.8126 6.00877 66.3036 6.01455C64.6333 6.01455 63.7497 6.97952 63.7497 8.80314V9.19635H62.8809C62.8457 9.19662 62.812 9.211 62.7872 9.23637C62.7624 9.26174 62.7485 9.29603 62.7485 9.33177V10.9347C62.7485 11.0099 62.8078 11.0711 62.8809 11.0711H63.7507V17.4348C63.7507 17.51 63.809 17.5702 63.8821 17.5702H65.6908C65.763 17.5702 65.8223 17.51 65.8223 17.4348V11.0701H67.5114L70.098 17.4317C69.8044 18.1008 69.5148 18.2342 69.1214 18.2342C68.8022 18.2342 68.4671 18.1359 68.1232 17.9433C68.1073 17.9346 68.0898 17.9292 68.0718 17.9275C68.0538 17.9257 68.0357 17.9277 68.0184 17.9333C68.0012 17.9395 67.9854 17.9491 67.9719 17.9617C67.9585 17.9743 67.9478 17.9896 67.9403 18.0065L67.3276 19.3858C67.3133 19.4168 67.3112 19.4522 67.3217 19.4848C67.3321 19.5174 67.3544 19.5447 67.3839 19.5613C67.9715 19.9033 68.6389 20.0787 69.3162 20.0689C70.6504 20.0689 71.3888 19.4309 72.0401 17.7136L75.1772 9.39697C75.1851 9.37633 75.1879 9.35406 75.1855 9.33206C75.1831 9.31005 75.1755 9.28896 75.1633 9.27058C75.1514 9.25244 75.1352 9.23756 75.1162 9.22724C75.0973 9.21693 75.0761 9.21149 75.0546 9.2114H73.1718C73.1441 9.21153 73.1172 9.22039 73.0947 9.23674C73.0722 9.25309 73.0553 9.27614 73.0462 9.30268L71.1179 14.9541L69.0058 9.29867C68.9965 9.27304 68.9797 9.25092 68.9576 9.23531C68.9355 9.21971 68.9092 9.21136 68.8823 9.2114H65.7926V9.21241ZM61.7729 9.20438H59.9642C59.929 9.20491 59.8954 9.21955 59.8708 9.2451C59.8462 9.27066 59.8325 9.30506 59.8328 9.3408V17.4348C59.8328 17.51 59.8921 17.5702 59.9652 17.5702H61.7739C61.8461 17.5702 61.9054 17.51 61.9054 17.4348V9.3398C61.9054 9.30406 61.8915 9.26976 61.8666 9.2444C61.8418 9.21903 61.8082 9.20464 61.7729 9.20438ZM60.8775 5.51902C60.5318 5.52114 60.2011 5.6624 59.958 5.91179C59.7148 6.16117 59.5792 6.49829 59.5807 6.84912C59.5798 7.023 59.6127 7.19536 59.6774 7.35636C59.7421 7.51736 59.8375 7.66384 59.958 7.78745C60.0785 7.91105 60.2218 8.00936 60.3797 8.07675C60.5377 8.14414 60.7071 8.1793 60.8785 8.18022C61.2243 8.1781 61.5552 8.0367 61.7983 7.7871C62.0415 7.53749 62.177 7.20012 62.1752 6.84912C62.1752 6.11385 61.5931 5.51902 60.8775 5.51902ZM76.7951 10.0099H76.464V10.4432H76.7951C76.9602 10.4432 77.059 10.3599 77.059 10.2265C77.059 10.0851 76.9602 10.0099 76.7951 10.0099ZM77.0096 10.6278L77.3704 11.1454H77.0659L76.7427 10.6709H76.464V11.1454H76.21V9.77414H76.805C77.1154 9.77414 77.3199 9.93764 77.3199 10.2115C77.3243 10.3067 77.2956 10.4005 77.2389 10.4765C77.1822 10.5526 77.1011 10.6061 77.0096 10.6278ZM76.7279 9.31873C76.0756 9.31873 75.5824 9.85037 75.5824 10.5014C75.5824 11.1514 76.0726 11.676 76.721 11.676C77.3733 11.676 77.8675 11.1444 77.8675 10.4934C77.8675 9.84335 77.3763 9.31873 76.7279 9.31873ZM76.721 11.8064C76.5529 11.806 76.3865 11.7719 76.2315 11.706C76.0764 11.6401 75.9357 11.5437 75.8175 11.4224C75.6993 11.3012 75.6058 11.1573 75.5426 10.9993C75.4794 10.8412 75.4475 10.672 75.449 10.5014C75.449 9.78517 76.0123 9.18833 76.7279 9.18833C76.896 9.18872 77.0624 9.22285 77.2174 9.28874C77.3725 9.35464 77.5132 9.451 77.6314 9.57229C77.7496 9.69358 77.8431 9.8374 77.9063 9.99547C77.9696 10.1535 78.0014 10.3228 77.9999 10.4934C77.9999 11.2096 77.4366 11.8074 76.721 11.8074V11.8064Z M19.0985 10.6382C15.2302 8.34115 8.85004 8.13001 5.15734 9.25061C4.56443 9.4307 3.93745 9.09586 3.75774 8.50285C3.57803 7.90967 3.91237 7.283 4.50579 7.10274C8.74454 5.81575 15.7911 6.06437 20.244 8.70775C20.7776 9.02438 20.9524 9.71333 20.6363 10.2458C20.3199 10.7793 19.6303 10.9549 19.0985 10.6382ZM17.6847 14.3488C14.4602 12.3664 9.54258 11.7923 5.72724 12.9502C5.23257 13.0996 4.71006 12.8208 4.55976 12.327C4.41084 11.8322 4.68965 11.3109 5.1838 11.1605C9.54206 9.83755 14.9602 10.4784 18.6638 12.7544C19.1038 13.0254 19.2424 13.6014 18.9717 14.0407C18.7003 14.481 18.1247 14.6191 17.6847 14.3488ZM16.475 17.5571C13.657 15.8349 10.1104 15.446 5.93306 16.4002C5.53058 16.4923 5.12966 16.2401 5.03782 15.8377C4.94546 15.4352 5.19677 15.0339 5.60011 14.9421C10.1715 13.8972 14.0923 14.3469 17.2554 16.2796C17.6079 16.4949 17.7191 16.9557 17.5034 17.3084C17.2879 17.6619 16.8275 17.7727 16.475 17.5571ZM0 11.9998C0 18.6277 5.37285 24 12 24C18.6277 24 24 18.6277 24 11.9998C24 5.37264 18.6277 0 12 0C5.37285 0 0 5.37264 0 11.9998Z"></path></svg>
+
+					</div>
+					<ul>
+						<li><svg class="invert" fill="#000000" width="25px" height="25px" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-home"><path d='M18 18V7.132l-8-4.8-8 4.8V18h4v-2.75a4 4 0 1 1 8 0V18h4zm-6 2v-4.75a2 2 0 1 0-4 0V20H2a2 2 0 0 1-2-2V7.132a2 2 0 0 1 .971-1.715l8-4.8a2 2 0 0 1 2.058 0l8 4.8A2 2 0 0 1 20 7.132V18a2 2 0 0 1-2 2h-6z'/></svg><span class="search" style="margin-top: 5px;">Home</span></li>
+						<li><svg class="invert" width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-8 6a8 8 0 1 1 14.32 4.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387A8 8 0 0 1 2 10z" fill="#0D0D0D"/></svg><span class= "search" style="margin-top: 3px;">Search</span></li>	
+					</ul>
+				</div>
+					<div class="library bg-grey rounded m-1 p-1">
+						<div class= "heading">
+							<h2>
+								<span aria-hidden="true" class="invert">
+									<svg data-encore-id="icon" role="img" aria-hidden="true" style="width: 26px; margin-top: 30px; fill: grey;" viewBox="0 0 24 24" class="Svg-sc-ytk21e-0 bneLcE">
+										<path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z"></path>
+											</svg>
+										</span>
+							
+								<span style="font-size: 18px;  margin-bottom:25px;">Your Library</span>
+							</h2>
+							</div>
+							<div class="songlist">
+							<ul>
+								<li><div style="gap-left: 10px;">
+									<svg class="invert" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="6.5" cy="18.5" r="3.5" stroke="#141B34" stroke-width="1.5"/>
+										<circle cx="18" cy="16" r="3" stroke="#141B34" stroke-width="1.5"/>
+										<path d="M10 18.5L10 7C10 6.07655 10 5.61483 10.2635 5.32794C10.5269 5.04106 11.0175 4.9992 11.9986 4.91549C16.022 4.57222 18.909 3.26005 20.3553 2.40978C20.6508 2.236 20.7986 2.14912 20.8993 2.20672C21 2.26432 21 2.4315 21 2.76587V16" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+										<path d="M10 10C15.8667 10 19.7778 7.66667 21 7" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg></div>
+									<div class="info">
+										<div>Song<br> Name</div>
+										<div>Song<br> Artist</div>
+									</div>
+									<div>
+										<svg fill="#ffffff" width="30px" height="30px" viewBox="0 0 24 24" id="play" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+											<polygon id="secondary" points="16 12 10 16 10 8 16 12" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polygon>
+											<circle id="primary" cx="12" cy="12" r="9" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle>
+										</svg>
+										<div class="playnow">
+											<span>palynow</span>
+										</div>
+									</div>
+								</li>
+							</ul>
+							
+							</div>
+						
+					<div class="footer">	
+						<div class="row">						
+							<div><a href="https://www.spotify.com/in-en/legal/" id="" class="Link-sc-k8gsk-0 eBaZxL Link__BottomLink-sc-c30omp-0 kmeDa" data-encore-id="textLink"><span data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 gWTpLn">Legal</span></a></div>
+							<div><a href="https://www.spotify.com/in-en/safetyandprivacy/" id="" class="Link-sc-k8gsk-0 eBaZxL Link__BottomLink-sc-c30omp-0 kmeDa" data-encore-id="textLink"><span data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 gWTpLn">Safety &amp; Privacy Center</span></a></div>
+						</div>
+						<div class="row">
+							<div><a href="https://www.spotify.com/in-en/legal/privacy-policy/" id="" class="Link-sc-k8gsk-0 eBaZxL Link__BottomLink-sc-c30omp-0 kmeDa" data-encore-id="textLink"><span data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 gWTpLn">Privacy Policy</span></a></div>
+							<div><a href="https://www.spotify.com/in-en/legal/cookies-policy/" id="" class="Link-sc-k8gsk-0 eBaZxL Link__BottomLink-sc-c30omp-0 kmeDa" data-encore-id="textLink"><span data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 gWTpLn">Cookies</span></a></div>
+							<div><a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3" id="" class="Link-sc-k8gsk-0 eBaZxL Link__BottomLink-sc-c30omp-0 kmeDa" data-encore-id="textLink"><span data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 gWTpLn">About Ads</span></a></div>
+						</div>
+						<div class="row">
+							<div><a href="https://www.spotify.com/in-en/accessibility/" id="" class="Link-sc-k8gsk-0 eBaZxL Link__BottomLink-sc-c30omp-0 kmeDa" data-encore-id="textLink"><span data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 gWTpLn">Accessibility</span></a></div>
+						</div>
+						<div class="row">
+							<div><a draggable="false" href="https://www.spotify.com/legal/cookies-policy/" target="_blank" rel="noopener" class="WycFx_Gl2tUXbUJpZiD8"><span class="encore-text encore-text-marginal" data-encore-id="text">Cookies</span></a></a></div>
+						</div>
+						
+						<div><button data-testid="language-selection-button" class="englishb" data-encore-id="buttonSecondary">
+						<span aria-hidden="true"
+                                            class="IconWrapper__Wrapper-sc-ihacte-0 cYVsbq"><svg data-encore-id="icon"
+                                                role="img" aria-hidden="true" viewBox="0 0 16 16"
+                                                class="Svg-sc-ytk21e-0 dYnaPI">
+                                                <path
+                                                    d="M8.152 16H8a8 8 0 1 1 .152 0zm-.41-14.202c-.226.273-.463.713-.677 1.323-.369 1.055-.626 2.496-.687 4.129h3.547c-.06-1.633-.318-3.074-.687-4.129-.213-.61-.45-1.05-.676-1.323-.194-.235-.326-.285-.385-.296h-.044c-.055.007-.19.052-.391.296zM4.877 7.25c.062-1.771.34-3.386.773-4.624.099-.284.208-.554.329-.806a6.507 6.507 0 0 0-4.436 5.43h3.334zm-3.334 1.5a6.507 6.507 0 0 0 4.436 5.43 7.974 7.974 0 0 1-.33-.806c-.433-1.238-.71-2.853-.772-4.624H1.543zm4.835 0c.061 1.633.318 3.074.687 4.129.214.61.451 1.05.677 1.323.202.244.336.29.391.297l.044-.001c.06-.01.19-.061.385-.296.226-.273.463-.713.676-1.323.37-1.055.626-2.496.687-4.129H6.378zm5.048 0c-.061 1.771-.339 3.386-.772 4.624-.082.235-.171.46-.268.674a6.506 6.506 0 0 0 4.071-5.298h-3.03zm3.031-1.5a6.507 6.507 0 0 0-4.071-5.298c.097.214.186.44.268.674.433 1.238.711 2.853.772 4.624h3.031z">
+                                                </path>
+                                            </svg>
+						</span>English</button></div>
+					</div>
+					</div>
+				</div>
+			<div class="right border bg-grey rounded ">
+				<div class="header">
+					<div class="nav">						
+									
+						<div class="hamburgerContainer">
+							<img class="invert hamburger" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KCjwhLS0gTGljZW5zZTogTUlULiBNYWRlIGJ5IGRldmVsb3BtZW50c2VlZDogaHR0cHM6Ly9naXRodWIuY29tL2RldmVsb3BtZW50c2VlZC9jb2xsZWN0aWNvbnMtbGliIC0tPgo8c3ZnIHdpZHRoPSIyMHB4IiBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICA8cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGlkPSJpY29uLWJvdW5kIiBmaWxsPSJub25lIiAvPgogIDxwYXRoIGQ9Ik0xLDloMTRWN0gxVjl6IE0xLDE0aDE0di0ySDFWMTR6IE0xLDJ2MmgxNFYySDF6IiAvPgo8L3N2Zz4=">
+
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M15 6L9.70711 11.2929C9.37377 11.6262 9.20711 11.7929 9.20711 12C9.20711 12.2071 9.37377 12.3738 9.70711 12.7071L15 18"
+									stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M9 18L14.2929 12.7071C14.6262 12.3738 14.7929 12.2071 14.7929 12C14.7929 11.7929 14.6262 11.6262 14.2929 11.2929L9 6"
+									stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</div>
+					</div>
+					<div class="buttons">
+						<button class="signupbtn">Sign up</button>
+						<button class="loginbtn">Log in</button>
+					</div>
+				</div>
+			<div class="Spotify-play">
+				<div class="Spotify-playlists">
+					<h2>Spotify Playlists</h2>
+					<div class="cardContainer">
+						<br>
+						<br>
+						
+						<div class="card">
+							<span>
+							<div class="player">
+								<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+								</div>
+								<img src="https://i.scdn.co/image/ab6761610000e5ebcb6926f44f620555ba444fca"/>
+									<h3>Pritam</h3>
+									<p>Artist</p>
+							</span>
+							</div>
+								<div class="card">
+								<span>
+									<div class="player">
+										<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab67616d0000b273ba071b7b2ffb03ccb472425d"/>
+									
+											<h3>Arijit Singh</h3>
+											<p>Artist</p>
+									</span>
+								</div>
+								<div class="card">
+								<span>
+								<div class="player">  
+								<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+								</div>
+								<img src="https://i.scdn.co/image/ab6761610000e5ebb19af0ea736c6228d6eb539c"/>
+									<h3>A.R. Rahman</h3>
+									<p>Artist</p>
+								</span>
+							</div>
+								<div class="card">
+								<span>
+									<div class="player">
+										<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab6761610000e5ebfc7c542c04b5f7dc8f1b1c16"/>
+											<h3>Anirudh</h3>
+											<p>Artist</p>
+									</span>
+								</div>
+								<div class="card">
+								<span>
+									<div class="player">
+										<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab6761610000e5eba038d7d87f8577bbb9686bd3"/>
+											<h3>Sachin-Jigar</h3>
+											<p>Artist</p>
+									</span>
+								</div>
+					</div>
+				</div>
+				<div class="Spotify-playlists">
+					<h2 style="margin-left: 10px;">Popular Artist</h2>
+					<div class="cardContainer">
+							<br>
+						<div class="card">
+							<div class="play">
+								<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+								</div>
+								<img src="https://i.scdn.co/image/ab67616d00001e029bb2d30b01ac2cada8a8ad03"/>
+									<h3>Ek Tha Raja</h3>
+									<p>Badshah</p>
+							</div>
+								<div class="card">
+									<div class="play">
+										<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab67616d0000b2735f3ede47954a93aa03efe5f9"/>
+											<h3>ANIMAL</h3>
+											<p>Manan Bhardwaj, Vishal Mishra, Jaani</p>
+								</div>
+								<div class="card">
+							<div class="play">
+								<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+								</div>
+								<img src="https://i.scdn.co/image/ab67616d0000b273d5f4378b1ffc9119fdc7306d"/>
+									<h3>Sajani(From....)</h3>
+									<p>Ram Samphat, Arijit Singh, Prashant Panday</p>
+							</div>
+								<div class="card">
+									<div class="play">
+									<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab67616d0000b2736404721c1943d5069f0805f3"/>
+											<h3>Aashiqui 2</h3>
+											<p>Mithoon, Ankit Tiwari, Jeet Gannguli</p>
+								</div>
+								<div class="card">
+									<div class="play">
+									<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab67616d0000b2731d1cc2e40d533d7bcebf5dae"/>
+											<h3>Moosetape</h3>
+											<p>Siddhu Moosewal</p>
+								</div>
+					</div>
+				</div>
+				<div class="Spotify-playlists">
+					<div class="cardContainer">
+						<br>
+								<div class="card">
+							<div class="play">
+								<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+								</div>
+								<img src= "https://i.scdn.co/image/ab67706f00000002d6e987f5eac610420e385ead"/>
+									<h3>Jazz for Sleep</h3>
+									<p>Let these calm Jazz tracks lull you to sleep.</p>
+							</div>
+								<div class="card">
+									<div class="play">
+										<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab67706f00000002e33921151f34f084b36d4480"/>
+											<h3>Night Rain</h3>
+											<p>Sleep with sounds of pouring rain and...</p>
+								</div>
+								<div class="card">
+							<div class="play">
+								<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+								</div>
+								<img src="https://i.scdn.co/image/ab67706f00000002325a73f69fa4fef821080f25"/>
+									<h3>lofi sleep</h3>
+									<p>Instrumental beats for a restful night's sleep</p>
+							</div>
+								<div class="card">
+									<div class="play">
+										<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab67706f000000021178668a0433d73e34bb4af5"/>
+											<h3>Deep Sleep</h3>
+											<p>Soothing, minimalist ambient for deep sleep.</p>
+								</div>
+								<div class="card">
+									<div class="play">
+										<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="12" cy="12" r="12" fill="#1ED760" stroke="none" />
+										<path d="M8 5.5L18 12L8 18.5V5.5Z" fill="#141B34" />
+									</svg>
+									</div>
+										<img src="https://i.scdn.co/image/ab67706f000000025efc7c6db6aa12968d5c00ca"/>
+											<h3>Dreamy Forest Music</h3>
+											<p>Wander into the Magical mix of music...</p>
+								</div>
+					</div>
+				</div>
+			</div>
+								<div class="playbar">
+										<div class="seekbar">
+											<div class="circle">
+	
+											</div>
+										</div>
+										<div class = "abovebar">
+										<div class="songinfo">
+										</div>
+	
+	
+									<div class="songbuttons">
+										<svg id="previous" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 5.8A1.8 1.8 0 0 1 4.8 4h1.4A1.8 1.8 0 0 1 8 5.8v12.4A1.8 1.8 0 0 1 6.2 20H4.8A1.8 1.8 0 0 1 3 18.2V5.8ZM21.462 4.113A1 1 0 0 1 22 5v14a1 1 0 0 1-1.573.82l-10-7a1 1 0 0 1 0-1.64l10-7a1 1 0 0 1 1.035-.067Z" fill="#000000"/></svg>
+									<!--	<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="#141B34" stroke-width="2" fill="white"/>
+										<path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="#141B34" stroke-width="2" fill="white"/>
+										</svg> --!>
+										<svg id="play" fill="#000000" width="30px" height="30px" viewBox="0 0 24 24"  data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><polygon id="secondary" points="16 12 10 16 10 8 16 12" style="fill: none; stroke: rgb(44, 169, 188); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polygon><circle id="primary" cx="12" cy="12" r="9" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle></svg>
+										<svg id="next" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.538 4.113a1 1 0 0 1 1.035.068l10 7a1 1 0 0 1 0 1.638l-10 7A1 1 0 0 1 2 19V5a1 1 0 0 1 .538-.887ZM16 5.8A1.8 1.8 0 0 1 17.8 4h1.4A1.8 1.8 0 0 1 21 5.8v12.4a1.8 1.8 0 0 1-1.8 1.8h-1.4a1.8 1.8 0 0 1-1.8-1.8V5.8Z" fill="#000"/></svg>
+									</div>
+									
+									<div class="voltime">
+									
+										<div class="songtime">
+	
+										</div>
+										<div class="volume">
+											<img width= "25px"src ="img/volume.svg" alt="">
+												<div class="range">
+													<input type="range" name="volume" alt="">
+												</div>
+										</div>
+									
+									</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		<script>
+		let currtentSong = new Audio();
+			function formatTime(seconds, returnFormat) {
+		if (returnFormat === 'formatted') {
+			const minutes = Math.floor(seconds / 60);
+			const remainingSeconds = seconds % 60;
+			const minutesFormatted = `${minutes}`.padStart(2, '0');
+			const secondsFormatted = `${remainingSeconds}`.padStart(2, '0');
+			return `${minutesFormatted};${secondsFormatted}`;
+		} else if (returnFormat === 'split') {
+			const minutes = Math.floor(seconds / 60);
+			const remainingSeconds = seconds % 60;
+        return {
+            minutes,
+            seconds: remainingSeconds
+        };
+		} else {
+			throw new Error('Invalid returnFormat. Use "formatted" or "split".');
+			}
+		}
+
+		const secondsFormatted = formatTime(72, 'formatted');
+			console.log(secondsFormatted);  // Output: "01;12"
+
+		const splitTime = formatTime(72, 'split');
+			console.log(splitTime);  // Output: { minutes: 1, seconds: 12 }
+
+		
+			async function main(){
+
+			let a= await fetch("C:\Users\ADM IN\Documents\img")
+			let response = await a.text();
+			console.log(response)
+			let div = document.Element("div")
+			div.innerHTML = response;
+			let as = div.getElementsByTagName("a")
+			let songs =[]
+			for(let index = 0; index <as.length; index++){
+				const element = as[index];
+				if(element.href.endsWith(".mp3")){
+					songs.push(elemnt.href.split("/song/")[1]
+				}
+			}
+			return songs
+			}
+
+			const playMusic = (track, pause=false) =>{
+				currentSong.Src = "/songs/" + track
+				if(!pause){
+				currentSong.play()
+				}
+				
+				play.src = "pause.svg"
+				doucument.querySelector(".songinfo").innerHTML =decodeURI(track)
+				document.querySelector(".songtime").innerHTML = "*00:00 / 00:00"
+			}
+			async function main(){
+
+			let songs = await getSongs()
+			playMusic(songs[0], true)
+			console.log(songs)
+
+			let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+			for (const song of songs){
+				songUL.innerHTML = songUL.innerHTML + '<li> <img class="invert" src="img/music.svg" alt="">
+				<div class="info">
+					<div>${song.replaceAll("%20","")}</div>
+					<div>Hayat</div>
+				</div>
+				<div>
+					<svg fill="#ffffff" width="30px" height="30px" viewBox="0 0 24 24" id="play" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+						<polygon id="secondary" points="16 12 10 16 10 8 16 12" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polygon>
+						<circle id="primary" cx="12" cy="12" r="9" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle>
+					</svg>
+					<div class="playnow">
+						<span>palynow</span>
+					</div>
+				</div>
+				 </li>';
+			}
+			Array.fromdocument.querySelector(*,songlist").getElementsByName("li")).forEach(e=>{
+			console.log(e.querySelector(".info").firstElementChild.innerHTML)
+			palyMusic(e.querySelector(".info").firstElementChild.innerHTML.trin())
+			})
+			var audio = new Audio(songs[0]);
+			audio.play();
+			audio.addEventListener("loadeddat", () => {
+				let duration = audio.duration;
+				console.log(audio.duration, audio.currentSrc, andio.currentTime)
+				});
+
+
+				play.addEventListener("click" , ()=>{
+					if(currentSong.paused){
+						currentSong.play()
+						play.src = "pause.svg"
+					}
+					else{
+						currentSong.pause()
+						play.src = "play.svg"
+					}
+					
+					currentSong.addEventListener("timeupdate", ()=>{
+						console.log(currentSong.currentTime, currentSong.duration);
+						document.querSelector(".songtime").innerHTML = '${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration)}'
+						document.querySelecotor(".circle").style.left = (currentSong.currentTime.currentTime/ currentSong.duration)*100 + "%";
+			
+			})
+			document.querySelecotor(".seekbar").addEverntListener("click", e=>{
+				let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100
+				doucument.querySelector(".circle").style.left = percent + "%";
+				currentSong.currentTime = ((currentSong.duration)* percent)/100
+				})
+				
+				document.querySelecotor(".hamburger").addEventListener("click",()=>{
+					document.querySelecotor(".left").style.left = 0
+				})
+				
+			
+			}
+			main()
+		</script>  
+		
+<!--		<script>
+    let currentSong = new Audio();
+
+    function formatTime(seconds, returnFormat) {
+        if (returnFormat === 'formatted') {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            const minutesFormatted = `${minutes}`.padStart(2, '0');
+            const secondsFormatted = `${remainingSeconds}`.padStart(2, '0');
+            return `${minutesFormatted}:${secondsFormatted}`;
+        } else if (returnFormat === 'split') {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return {
+                minutes,
+                seconds: remainingSeconds
+            };
+        } else {
+            throw new Error('Invalid returnFormat. Use "formatted" or "split".');
+        }
+    }
+
+    async function main() {
+        let songs = await getSongs(); // Assuming getSongs() is defined elsewhere
+        playMusic(songs[0], true);
+        console.log(songs);
+
+        let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0];
+        for (const song of songs) {
+            songUL.innerHTML += `<li>
+                <img class="invert" src="img/music.svg" alt="">
+                <div class="info">
+                    <div>${song.replaceAll("%20", "")}</div>
+                    <div>Hayat</div>
+                </div>
+                <div>
+                    <svg fill="#ffffff" width="30px" height="30px" viewBox="0 0 24 24" id="play" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+                        <polygon id="secondary" points="16 12 10 16 10 8 16 12" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polygon>
+                        <circle id="primary" cx="12" cy="12" r="9" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle>
+                    </svg>
+                    <div class="playnow">
+                        <span>playnow</span>
+                    </div>
+                </div>
+            </li>`;
+        }
+
+        Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
+            console.log(e.querySelector(".info").firstElementChild.innerHTML);
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
+        });
+
+        var audio = new Audio(songs[0]);
+        audio.play();
+        audio.addEventListener("loadeddata", () => {
+            let duration = audio.duration;
+            console.log(audio.duration, audio.currentSrc, audio.currentTime);
+        });
+
+        play.addEventListener("click", () => {
+            if (currentSong.paused) {
+                currentSong.play();
+                play.src = "pause.svg";
+            } else {
+                currentSong.pause();
+                play.src = "play.svg";
+            }
+
+            currentSong.addEventListener("timeupdate", () => {
+                console.log(currentSong.currentTime, currentSong.duration);
+                document.querySelector(".songtime").innerHTML = `${formatTime(currentSong.currentTime)}/${formatTime(currentSong.duration)}`;
+                document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
+            });
+        });
+
+        document.querySelector(".seekbar").addEventListener("click", e => {
+            let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+            document.querySelector(".circle").style.left = percent + "%";
+            currentSong.currentTime = (currentSong.duration * percent) / 100;
+        });
+
+        document.querySelector(".hamburger").addEventListener("click", () => {
+            document.querySelector(".left").style.left = 0;
+        });
+    }
+
+    main(); 
+</script> --!>
+	<!-- <script>
+		document.querySelector(".seekbar").addEventListener("click", e => {
+            let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+            document.querySelector(".circle").style.left = percent + "%";
+            currentSong.currentTime = (currentSong.duration * percent) / 100;
+        });
+
+        document.querySelector(".hamburger").addEventListener("click", () => {
+            document.querySelector(".left").style.left = 0;
+        });
+
+</script> --!>
+
+<script>
+    document.querySelector(".hamburger").addEventListener("click", () => {
+        document.querySelector(".left").style.left = "0";
+    });
+
+    document.querySelector(".close").addEventListener("click", () => {
+        document.querySelector(".left").style.left = "-110%"; // or any value to hide it off-screen
+        document.querySelector(".close").removeEventListener("click", arguments.callee);
+    });
+
+    document.querySelector(".seekbar").addEventListener("click", e => {
+        let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+        document.querySelector(".circle").style.left = percent + "%";
+        // You might want to replace currentSong with your actual implementation
+        // currentSong.currentTime = (currentSong.duration * percent) / 100;
+    });
+</script>
+
+
+	
+	
+	
+<!--	<script>
+		console.log('Lets write JavaScript');
+					let currentSong = new Audio();
+			let songs;
+			let currFolder;
+			
+			function secondsToMinutesSeconds(seconds) {
+				if (isNaN(seconds) || seconds < 0) {
+					return "00:00";
+				}
+			
+				const minutes = Math.floor(seconds / 60);
+				const remainingSeconds = Math.floor(seconds % 60);
+			
+				const formattedMinutes = String(minutes).padStart(2, '0');
+				const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+			
+				return `${formattedMinutes}:${formattedSeconds}`;
+			}
+			
+			async function getSongs(folder) {
+				currFolder = folder;
+				let a = await fetch(`/${folder}/`)
+				let response = await a.text();
+				let div = document.createElement("div")
+				div.innerHTML = response;
+				let as = div.getElementsByTagName("a")
+				songs = []
+				for (let index = 0; index < as.length; index++) {
+					const element = as[index];
+					if (element.href.endsWith(".mp3")) {
+						songs.push(element.href.split(`/${folder}/`)[1])
+					}
+				}
+			
+			
+			
+				// Show all the songs in the playlist
+				let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
+				songUL.innerHTML = ""
+				for (const song of songs) {
+					songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" width="34" src="img/music.svg" alt="">
+										<div class="info">
+											<div> ${song.replaceAll("%20", " ")}</div>
+											<div>Harry</div>
+										</div>
+										<div class="playnow">
+											<span>Play Now</span>
+											<img class="invert" src="img/play.svg" alt="">
+										</div> </li>`;
+				}
+			
+				// Attach an event listener to each song
+				Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+					e.addEventListener("click", element => {
+						playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+			
+					})
+				})
+			
+				return songs
+			}
+			
+			const playMusic = (track, pause = false) => {
+				currentSong.src = `/${currFolder}/` + track
+				if (!pause) {
+					currentSong.play()
+					play.src = "img/pause.svg"
+				}
+				document.querySelector(".songinfo").innerHTML = decodeURI(track)
+				document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
+			
+			
+			}
+			
+			async function displayAlbums() {
+				console.log("displaying albums")
+				let a = await fetch(`/songs/`)
+				let response = await a.text();
+				let div = document.createElement("div")
+				div.innerHTML = response;
+				let anchors = div.getElementsByTagName("a")
+				let cardContainer = document.querySelector(".cardContainer")
+				let array = Array.from(anchors)
+				for (let index = 0; index < array.length; index++) {
+					const e = array[index]; 
+					if (e.href.includes("/songs") && !e.href.includes(".htaccess")) {
+						let folder = e.href.split("/").slice(-2)[0]
+						// Get the metadata of the folder
+						let a = await fetch(`/songs/${folder}/info.json`)
+						let response = await a.json(); 
+						cardContainer.innerHTML = cardContainer.innerHTML + ` <div data-folder="${folder}" class="card">
+						<div class="play">
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path d="M5 20V4L19 12L5 20Z" stroke="#141B34" fill="#000" stroke-width="1.5"
+									stroke-linejoin="round" />
+							</svg>
+						</div>
+			
+						<img src="/songs/${folder}/cover.jpg" alt="">
+						<h2>${response.title}</h2>
+						<p>${response.description}</p>
+					</div>`
+					}
+				}
+			--!>
+				<!-- Load the playlist whenever card is clicked-->
+	<!--			Array.from(document.getElementsByClassName("card")).forEach(e => { 
+					e.addEventListener("click", async item => {
+						console.log("Fetching Songs")
+						songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)  
+						playMusic(songs[0])
+			
+					})
+				})
+			}
+			
+	<!--		async function main() {
+				
+				await getSongs("songs/ncs")
+				playMusic(songs[0], true)
+			
+				<!-- // Display all the albums on the page-->
+	<!--			await displayAlbums()
+			
+			
+				<!-- // Attach an event listener to play, next and previous-->
+	<!--			play.addEventListener("click", () => {
+					if (currentSong.paused) {
+						currentSong.play()
+						play.src = "img/pause.svg"
+					}
+					else {
+						currentSong.pause()
+						play.src = "img/play.svg"
+					}
+				})
+			
+				<!-- // Listen for timeupdate event-->
+		<!--		currentSong.addEventListener("timeupdate", () => {
+					document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)} / ${secondsToMinutesSeconds(currentSong.duration)}`
+					document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
+				})
+			
+				<!-- // Add an event listener to seekbar-->
+	<!--			document.querySelector(".seekbar").addEventListener("click", e => {
+					let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+					document.querySelector(".circle").style.left = percent + "%";
+					currentSong.currentTime = ((currentSong.duration) * percent) / 100
+				})
+			
+				<!-- // Add an event listener for hamburger-->
+		<!--		document.querySelector(".hamburger").addEventListener("click", () => {
+					document.querySelector(".left").style.left = "0"
+				})
+			
+				<!-- // Add an event listener for close button-->
+	<!--			document.querySelector(".close").addEventListener("click", () => {
+					document.querySelector(".left").style.left = "-120%"
+				})
+			
+			<!--	// Add an event listener to previous-->
+		<!--		previous.addEventListener("click", () => {
+					currentSong.pause()
+					console.log("Previous clicked")
+					let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+					if ((index - 1) >= 0) {
+						playMusic(songs[index - 1])
+					}
+				})
+			
+				<!-- // Add an event listener to next-->
+		<!-- 		next.addEventListener("click", () => {
+					currentSong.pause()
+					console.log("Next clicked")
+			
+					let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+					if ((index + 1) < songs.length) {
+						playMusic(songs[index + 1])
+					}
+				})
+			
+				<!-- // Add an event to volume-->
+		<!-- 		document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
+					console.log("Setting volume to", e.target.value, "/ 100")
+					currentSong.volume = parseInt(e.target.value) / 100
+					if (currentSong.volume >0){
+						document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
+					}
+				})
+			
+				<!-- // Add event listener to mute the track-->
+		<!--		document.querySelector(".volume>img").addEventListener("click", e=>{ 
+					if(e.target.src.includes("volume.svg")){
+						e.target.src = e.target.src.replace("volume.svg", "mute.svg")
+						currentSong.volume = 0;
+						document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+					}
+					else{
+						e.target.src = e.target.src.replace("mute.svg", "volume.svg")
+						currentSong.volume = .10;
+						document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+					}
+			
+				})
+			
+			
+			
+			
+			
+			}
+			
+			main() 
+			
+			</script>
+	--!>
+	</body>
+</html>
